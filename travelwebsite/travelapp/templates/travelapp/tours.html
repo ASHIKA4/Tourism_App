@@ -1,0 +1,35 @@
+
+{% extends 'travelapp/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card h-100">
+            <img src="{% static 'travelapp/images/tour1.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Adventure in the Alps</h5>
+                <p class="card-text">Experience breathtaking hikes and adventures.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="{% static 'travelapp/images/tour2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Safari in Africa</h5>
+                <p class="card-text">Discover the untamed beauty of wildlife safaris.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100">
+            <img src="{% static 'travelapp/images/tour3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Beach Getaway</h5>
+                <p class="card-text">Relax on the most beautiful beaches in the world.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

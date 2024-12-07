@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'travelapp/bootstrap/css/bootstrap.min.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        h1{
+            position: relative;
+            right: 200px;
+            font-family:Georgia;
+            color: beige;
+        }
+        /* Full-page background image */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header-background {
+            background-image: url("{% static 'travelapp/images/header-bg.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            border-radius: 50px;
+        }
+
+        /* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    z-index: 1030;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 20px;
+}
+
+.navbar.scrolled {
+    background-color: #015515 !important; /* Green color on scroll */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-link {
+    color: white !important;
+    font-size: medium;
+}
+
+.navbar.scrolled .nav-link {
+    color: white !important;
+}
+
+.navbar-brand h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+.navbar.scrolled .navbar-brand h1 {
+    color: #28a745;
+}
+
+/* Search Input and Button */
+.navbar .form-control {
+    border-radius: 50px;
+    width: 200px;
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 768px) {
+    /* Adjust navbar styles for smaller screens */
+    .navbar .form-control {
+        width: 150px;
+        font-size: 0.9rem;
+    }
+
+    .navbar .btn-outline-light {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .navbar .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .navbar-brand h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* For extra-small screens (e.g., phones) */
+    .navbar .form-control {
+        width: 120px;
+    }
+
+    .navbar .btn-outline-light {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .navbar .nav-link {
+        font-size: 0.8rem;
+    }
+
+    .navbar-brand h1 {
+        font-size: 1.2rem;
+    }
+
+    /* Stack navigation links vertically */
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 5px;
+    }
+}
+
+/* Ensure content starts below the navbar */
+.content {
+    margin-top: 80px; /* Adjust based on navbar height */
+    padding: 1rem;
+}
+
+        /* Body Background */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'travelapp/images/background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensures the image covers the full viewport height */
+            width: 100%;   /* Ensures the image covers the full viewport width */
+            overflow-x: hidden; /* Prevent horizontal scrolling */;
+        }
+        h2{
+            color:#f1efee;
+            font-family: Georgia;
+            font-size: 75px;
+            justify-content: center;
+            position: relative;
+            bottom:50%;
+            left: 10%;
+        }
+        h2 span{
+            color: orangered;
+        }
+        /* Apply a negative margin to move the entire container upwards */
+.container {
+    position: relative; /* Ensure the container is positioned for adjustments */
+    top: -250px; /* Move the entire container up */
+    
+}
+
+/* Adjustments for medium and large screens */
+@media (max-width: 991px) {
+    .container {
+        top: -30px; /* Move upward for tablets */
+        padding-top: 30px; /* Adjust padding */
+    }
+}
+
+/* Adjustments for small screens (mobile) */
+@media (max-width: 576px) {
+    .container {
+        top: -20px; /* Move upward for smaller screens */
+        padding-top: 20px; /* Adjust padding */
+    }
+}
+
+/* Ensure the row with cards stays centered */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to the top */
+}
+        /* Rounded Card Styling */
+        .card {
+            border: none;
+        border-radius: 50%; /* Makes the card circular */
+        overflow: visible;
+        text-align: center;
+        }
+        .card img {
+            border-radius: 50%; /* Ensures the image is circular */
+        width: 100%;
+        height: auto;
+    
+           
+        }
+        /* Card Stars */
+        .stars {
+            color: #ffd700;
+            margin: 10px 0;
+        }   
+        /* Card Text */
+        .card-text {
+            font-size: 14px;
+            color: #555;
+           
+        }
+ 
+/* Section Title */
+.card-title {
+    font-size: 1.6rem; /* Larger title font size */
+    font-weight: bold;
+    margin-top: 15px; /* More spacing between title and content */
+    color: #355e3b; /* Green color initially */
+    position: relative; /* Allow positioning for transitions */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions for color and movement */
+}
+
+/* Hover effect for the title */
+.card-title:hover {
+    color: #e74c3c; /* Red color on hover */
+    transform: translateY(-8px); /* Move the green title upwards */
+}
+        /* Badge Styling */
+        .region-badge {
+            background-color: #f06b2d;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* Background styling */
+        .header-section {
+        background-image: url("{% static 'travelapp/images/map.jpg' %}");
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+        background-size: cover; /* Scale the image to cover the entire container */
+        background-position: center; /* Center the background image */
+        color: #355e3b;
+        text-align: center;
+        padding: 3rem 1rem;
+        position: relative; /* Ensure the container is positioned for adjustments */
+        top: -100px; /* Move the entire container up */
+        margin-bottom: 60rem;
+    }
+
+        /* Circular Images Wrapper */
+.circular-images-curve {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10rem; /* Space below the images */
+}
+
+/* Individual Images */
+.circular-images-curve img {
+    border-radius: 50%;
+    position: absolute;
+}
+/* Adjust sizes and positions for the curve */
+.img1 {
+    width: 50px;
+    height: 50px;
+    left: 29.5%;
+    top: 60px;
+    border: 4px solid #355e3b;
+}
+
+.img2 {
+    width: 70px;
+    height: 70px;
+    left: 33.5%;
+    top: 40px;
+    border: 4px solid rgb(204, 200, 200);
+}
+
+.img3 {
+    width: 90px;
+    height: 90px;
+    left: 39%;
+    top: 20px;
+    border: 4px solid #355e3b;
+}
+
+.img4 {
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    border: 4px solid rgb(204, 200, 200);
+}
+
+.img5 {
+    width: 90px;
+    height: 90px;
+    left: 54%;
+    top: 20px;
+    border: 4px solid #355e3b;
+}
+
+.img6 {
+    width: 70px;
+    height: 70px;
+    left: 61%;
+    top: 40px;
+    border: 4px solid rgb(204, 200, 200);
+}
+
+.img7 {
+    width: 50px;
+    height: 50px;
+    left: 66.5%;
+    top: 60px;
+    border: 4px solid #355e3b;
+}
+        /* Tagline Styling */
+        .header-tagline {
+            font-family: 'Georgia', serif;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-top: 6rem; /* Add space between tagline and images */
+            line-height: 1.5;
+        }
+
+        .header-tagline span {
+            color: orange; /* Highlighted words */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .circular-images-curve img {
+                width: 60px;
+                height: 60px;
+                top: 30px;
+            }
+            .img3 {
+                width: 80px;
+                height: 80px;
+            }
+            .header-tagline {
+                font-size: 1.5rem;
+                margin-top: 4rem;
+            }
+        }
+        /* Container to align buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Space between buttons */
+    margin-top: 2rem; /* Add spacing above the buttons */
+}
+
+/* Common button styling */
+.curved-button {
+    border: none; /* Remove border */
+    border-radius: 50px; /* Make the button curved */
+    padding: 1rem 2.5rem; /* Increase padding for larger size */
+    font-size: 1.2rem; /* Increase text size */
+    font-weight: 500; /* Make text bold */
+    cursor: pointer; /* Show pointer on hover */
+    transition: all 0.3s ease-in-out; /* Add smooth hover effect */
+}
+
+/* Green button (Our Best Tours) */
+.green-button {
+    background-color: #02490e; /* Green background */
+    color: white; /* White text color */
+    border: 2px dotted #355e3b;
+}
+
+.green-button:hover {
+    background-color: white; /* White background on hover */
+    color: #355e3b; /* Green text on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+/* Grey button (View Destination) */
+.grey-button {
+    background-color: #d3d3d3; /* Grey background */
+    color: #355e3b; /* Green text */
+    border: 2px dotted #355e3b; /* Green dotted border */
+}
+
+.grey-button:hover {
+    background-color: white; /* White background on hover */
+    color: #355e3b; /* Keep green text on hover */
+    border: 2px dotted #355e3b; /* Maintain green dotted border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center align */
+    }
+
+    .curved-button {
+        width: 80%; /* Make buttons take up more width */
+        text-align: center; /* Center text */
+    }
+}
+    .rounded-figures img {
+        border-radius: 5%;
+        margin-top: 300px;
+       
+    }
+    .fig1{
+        width: 150px;
+        height: 200px;
+        position: absolute;
+        top: 600px;
+        left: 15px;
+        
+    }
+    .fig2{
+        width: 250px;
+        height: 300px;
+        position: absolute;
+        left: 120px;
+        top: 700px; 
+    }
+    .fig3{
+        width: 250px;
+        height: 300px;
+       position: absolute;
+       right: 15px;
+       top: 600px;
+
+        
+    }
+    .fig4{
+        width: 325px;
+        height: 390px;
+        position: absolute;
+        left: 15px;
+        top: 980px;
+    }
+    .fig5{
+        width: 300px;
+        height: 350px;
+        position: absolute;
+        left: 400px;
+        top: 980px;
+        
+    }
+    .fig6{
+        width: 250px;
+        height: 300px;
+        position: absolute;
+        top: 900px;
+        right: 300px;
+
+
+
+    }
+    .fig7{
+        width: 250px;
+        height: 300px;
+        position: absolute;
+        top: 1100px;
+        left: 77%;
+    }
+    h4{
+        font-size:200px;
+        font-weight: 500;
+        color: cadetblue;
+        border-right: 1px solid cadetblue;
+    }
+    .adventures-diagram{
+        background-image: url("{% static 'travelapp/images/ocean.jpeg' %}");
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+        background-size: cover;
+        background-position: center; /* Center the background image */
+        
+    }
+    /* Marquee Container */
+.marquee-container {
+    width: 100%;
+    overflow: hidden; /* Hide overflow for a clean scroll */
+    padding-top: 200px; /* Top and bottom padding */
+}
+
+/* Marquee Text */
+.marquee-text {
+    display: flex;
+    animation: scroll-text 20s linear infinite; /* Continuous scroll animation */
+    justify-content: center;
+}
+
+.marquee-text h6 {
+    color: white;
+    font-weight: 500;
+    font-size: 120px;
+    white-space: nowrap; /* Prevent text wrapping */
+    margin-right: 50px; /* Spacing between repeated texts */
+}
+
+/* Keyframes for scrolling effect */
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100%); /* Start from the right */
+    }
+    100% {
+        transform: translateX(-100%); /* End at the left */
+    }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .marquee-text h6 {
+        font-size: 60px; /* Reduce font size for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .marquee-text h6 {
+        font-size: 40px; /* Further reduce font size for very small screens */
+    }
+}
+    .adventures-diagram p{
+        color: white;
+        text-align: center;
+        padding-top: 100px;
+    }
+    /* Container to center the button */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh;
+    
+}
+
+/* Curved Button Styling */
+.curved-bookbutton {
+    border-radius: 50px; /* Make the button curved */
+    padding: 1rem 1rem; /* Adjust padding for larger button size */
+    font-size: 1rem; /* Increase text size */
+    font-weight: 700; /* Make text bold */
+    cursor: pointer; /* Show pointer on hover */
+    transition: all 0.3s ease-in-out; /* Add smooth hover effect */
+    background-color: white;
+    color: #015214; /* Initial text color */
+    border: none;
+}
+
+/* Hover effect */
+.curved-bookbutton:hover {
+    background-color: transparent; /* Change background to transparent */
+    border: 2px dotted white; /* Dotted border on hover */
+    color: white; /* Change text color to white */
+    
+}
+
+/* Responsive Design: Adjust button size for tablets */
+@media (max-width: 768px) {
+    .curved-bookbutton {
+        font-size: 1rem; /* Smaller text for tablets */
+        padding: 0.8rem 1.5rem; /* Smaller padding for tablets */
+    }
+}
+
+/* Responsive Design: Adjust button size for mobile */
+@media (max-width: 576px) {
+    .curved-bookbutton {
+        font-size: 0.9rem; /* Smaller text for mobile */
+        padding: 0.7rem 1.2rem; /* Smaller padding for mobile */
+    }
+}
+
+    .team-card {
+        text-align: center;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 120px / 120px; /* Creates more rounded top and bottom */
+        overflow: visible; /* Ensures image and content stay within the card boundaries */
+        height: 400px;
+    }
+    .team-card img {
+        width: 100%; /* Ensures the image spans the card width */
+        height: 85%; /* Maintains aspect ratio */
+        border-radius: 120px / 120px; /* Rounded corners at the top */
+    }
+    .team-card h5 {
+        margin-top: 15px;
+        font-weight:200;
+    }
+    .team-card .role {
+        color: #ff5722;
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+    .social-icons {
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+    .social-icons a {
+        margin: 0 10px;
+        color: #ff5722;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    .social-icons a:hover {
+        color: #f4511e;
+    }
+    .card-content{
+        background-color: white;
+        position: relative;
+        bottom: 80px;
+        border-radius: 50%;
+        height: 150px;
+    }
+
+      /* Image Cards Section */
+      .card-img-overlay {
+        background: rgba(0, 0, 0, 0.4);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 15px;
+        height: 85vh;
+      }
+      .card img{
+        border-radius: 15px;
+        object-fit: cover;
+        height: 85vh;
+      }
+      .card-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: white;
+      }
+      .card-text {
+        font-size: 1.1rem;
+        color: white;
+      }
+      .row {
+        margin: 0;
+        padding: 0;
+    }
+    .col-lg-4, .col-md-6, .col-12 {
+        padding: 0;
+    }
+    .card {
+        margin: 0;
+        width: 100%;
+    }
+    
+      /* Adjust for smaller screens */
+      @media (max-width: 768px) {
+        .card-title {
+          font-size: 1.4rem;
+        }
+        .card-text {
+          font-size: 0.9rem;
+        }
+      }
+</style>
+
+
+    
+</head>
+<body>
+    <!-- Full-page Background -->
+    <div class="header-background">
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container-fluid d-flex justify-content-between">
+                <!-- Links -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              ABOUT
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">WHO ARE WE</a></li>
+                              <li><a class="dropdown-item" href="#">SERVICES</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">DESTINATION</a></li>
+                              <li><a class="dropdown-item" href="#">PRICING</a></li>
+                              <li><a class="dropdown-item" href="#">FAQ</a></li>
+                              <li><a class="dropdown-item" href="#">TESTIMONIALS</a></li>
+                              <li><a class="dropdown-item" href="#">CONTACT US</a></li>
+                            </ul>
+                          </li>
+
+                        <li class="nav-item"><a class="nav-link" href="/tours/">TOURS</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              ALL PAGES
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                          </li>
+                    </ul>
+                </div>
+                <!-- Brand -->
+                <div>
+                    <h1>Let Journey</h1>
+                </div>
+                <!-- Search and Cart -->
+                <div class="d-flex align-items-center">
+                    <form class="d-flex">
+                        <input class="form-control rounded-pill me-2" type="search" placeholder="Search..." aria-label="Search">
+                        <button class="btn btn-outline-light rounded-pill" type="submit">
+                            <i class="bi bi-search "></i>
+                        </button>
+                    </form>
+                    <a href="#" class="btn btn-outline-light rounded-pill ms-3">
+                        <!-- <i class="bi bi-cart3"></i> -->Cart (0) 
+                    </a>
+                </div> 
+            </div>
+        </nav>
+    </div>
+    <h2>Every Trip <br><span>Tells A Story!</span></h2>
+    <div class="container mt-5 pt-5">
+        <div class="row gy-4 justify-content-center">
+            <!-- Card 1 -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static 'travelapp/images/europe.jpg' %}" alt="Europe"> 
+                    </div>
+                    <div class="card-body">
+                        <span class="region-badge">EUROPE</span>
+                        <h5 class="card-title">Spain</h5>
+                        
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                        <p class="card-text">Discover the wonders of Europe with stunning landscapes, rich culture, and unforgettable experiences.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 2 -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static 'travelapp/images/asia.jpg' %}" alt="Asia">
+                        
+                    </div>
+                    <div class="card-body">
+                        <span class="region-badge">ASIA</span>
+                        <h5 class="card-title">Indonesia</h5>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="card-text">Experience vibrant traditions, lush nature, and mesmerizing destinations in Asia.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 3 -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <div class="position-relative">
+                        <img src="{% static 'travelapp/images/africa.jpg' %}" alt="Africa">
+                        
+                    </div>
+                    <div class="card-body">
+                        <span class="region-badge">Africa</span>
+                        <h5 class="card-title">Egypt</h5>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <p class="card-text">Explore ancient pyramids, vast deserts, and stunning wildlife in Africa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section -->
+    <header class="header-section">
+        <!-- Circular Images -->
+        <div class="circular-images-curve">
+            <img src="{% static 'travelapp/images/europe.jpg' %}" alt="Person 1" class="img1">
+            <img src="{% static 'travelapp/images/eiffel.jpg' %}" alt="Person 2" class="img2">
+            <img src="{% static 'travelapp/images/carousel1.jpg' %}" alt="Person 3" class="img3">
+            <img src="{% static 'travelapp/images/travel7.jpg' %}" alt="Person 4" class="img4">
+            <img src="{% static 'travelapp/images/travel6.jpg' %}" alt="Person 5" class="img5">
+            <img src="{% static 'travelapp/images/travel1.jpg' %}" alt="Person 6" class="img6">
+            <img src="{% static 'travelapp/images/travel2.webp' %}" alt="Person 7" class="img7">
+        </div>
+        <!-- Tagline -->
+        <div class="header-tagline">
+           <span>We Don’t Just Plan </span>Vacations,We<br>
+            Create Lifelong <br><span>Memories and Unforgettable<br></span>Adventures
+        </div>
+        <div class="button-container">
+            <button class="curved-button green-button">Our Best Tours</button>
+            <button class="curved-button grey-button">View Destination</button>
+        </div>
+        
+        <div class="rounded-figures">
+            <img src="{% static 'travelapp/images/eiffel.jpg' %}" alt="figure 1" class="fig1">
+            <img src="{% static 'travelapp/images/travel5.jpeg' %}" alt="figure 2" class="fig2">
+            <img src="{% static 'travelapp/images/travel3.webp' %}" alt="figure 3" class="fig3">
+            <img src="{% static 'travelapp/images/travel1.jpg' %}" alt="figure 4" class="fig4">
+            <img src="{% static 'travelapp/images/travel5.jpg' %}" alt="figure 5" class="fig5">
+            <img src="{% static 'travelapp/images/travel6.jpg' %}" alt="figure 6" class="fig6">
+            <img src="{% static 'travelapp/images/travel7.jpg' %}" alt="figure 7" class="fig7">     
+        </div>  
+    </header>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col opacity-25"><h4>20</h4><br>
+                    <p>20 Million successful tours conducted, each filled with unforgettable experiences and lasting memories.</p>
+                </div>
+                <div class="col opacity-25"><h4>50</h4><br>
+                <p>50+ expertly designed new travel routes tailored to explore the world’s most breathtaking destinations.</p></div>
+                <div class="col opacity-25"><h4>98</h4><br>
+                <p>98% of our travelers return home happy, satisfied, and eager to book their next adventure with us.</p></div>
+            </div>
+        </div>
+        <div class="adventures-diagram">
+            <div class="marquee-container">
+                <div class="marquee-text">
+                    <h6>ADVENTURE AWAITS.</h6>
+                    <h6>ADVENTURE AWAITS</h6> <!-- Duplicate for seamless scroll -->
+                </div>
+            </div>
+            <p>At Let Travel, we believe that every journey should be more <br>than just a vacation - it’s an unforgettable story waiting to <br>unfold. Let’s make your travel dreams a reality!</p>
+            <div class="button-container">
+                <button class="curved-bookbutton">BOOK YOUR TRIP NOW</button>
+            </div>
+        </div>
+        <div class="container my-5 pt-5">
+            <div class="row g-4">
+                <!-- Team Member Cards -->
+                <div class="col-md-3">
+                    <div class="team-card">
+                        <img src="{% static 'travelapp/images/emma.jpg' %}" alt="Emma Roberts">
+                        <div class="card-content">
+                            <div class="social-icons">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                            <h5 class="mt-3">Emma Roberts</h5>
+                            <p class="role">Travel Consultant</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="col-md-3">
+                    <div class="team-card">
+                        <img src="{% static 'travelapp/images/james.jpg' %}" alt="James Turner">
+                        <div class="card-content">
+                            <div class="social-icons">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                            <h5 class="mt-3">James Turner</h5>
+                            <p class="role">Adventure Expert</p>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="col-md-3">
+                    <div class="team-card">
+                        <img src="{% static 'travelapp/images/sophia.jpg' %}" alt="Sophia Martinez">
+                        <div class="card-content">
+                            <div class="social-icons">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                            <h5 class="mt-3">Sophia Martinez</h5>
+                            <p class="role">Extreme Guide</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="col-md-3">
+                    <div class="team-card">
+                        <img src="{% static 'travelapp/images/organizer.jpg' %}" alt="Liam Bennett">
+                        <div class="card-content">
+                        <div class="social-icons">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-x-circle"></i></a>
+                        </div>
+                        <h5 class="mt-3">Liam Bennett</h5>
+                        <p class="role">Tour Organizer</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card text-white">
+          <img src="{% static 'travelapp/images/hill.jpg' %}" class="card-img1" alt="Mystical Bali">
+          <div class="card-img-overlay">
+            <p class="mb-2">DECEMBER 5, 2024</p>
+            <h5 class="card-title">MYSTICAL BALI</h5>
+            <p class="card-text">Discover the magic of Bali, with packages starting at $620.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card text-white">
+          <img src="{% static 'travelapp/images/nature.webp' %}" class="card-img2" alt="Madeira Wild">
+          <div class="card-img-overlay">
+            <p class="mb-2">OCTOBER 20, 2024</p>
+            <h5 class="card-title">MADEIRA WILD</h5>
+            <p class="card-text">Explore the untouched beauty of Madeira. Tickets available today for just $550.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card text-white">
+          <img src="{% static 'travelapp/images/hill2.jpg' %}" class="card-img3" alt="Maui Retreat">
+          <div class="card-img-overlay">
+            <p class="mb-2">NOVEMBER 14, 2024</p>
+            <h5 class="card-title">MAUI RETREAT</h5>
+            <p class="card-text">Discover the lush landscapes of Maui, starting from $780.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Add or remove the "scrolled" class based on scroll position
+        document.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
