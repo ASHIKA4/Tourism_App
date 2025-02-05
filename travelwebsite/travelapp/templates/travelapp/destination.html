@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer Reviews</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .testimonial-section {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .customer-reviews {
+            color: #f56a6a;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .carousel-item {
+            text-align: center;
+            transform: scale(0.8); /* Initially smaller for left and right items */
+            transition: transform 0.6s ease-in-out; /* Smooth transition */
+            position: relative;
+            max-width: 100%;
+        }
+
+        .carousel-item.active {
+            transform: scale(1); /* Full size when active */
+        }
+
+        .carousel-item.left {
+            transform: scale(0.8); /* Left item smaller */
+            position: absolute;    /* Keep left item off-center */
+            left: -100px;          /* Position it off the left side */
+        }
+
+        .carousel-item.right {
+            transform: scale(0.8); /* Right item smaller */
+            position: absolute;    /* Keep right item off-center */
+            right: -100px;         /* Position it off the right side */
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            z-index: 10;
+            width: 5%;               /* Make arrows smaller */
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: #f56a6a;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #234b47;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .customer-role {
+            color: #f56a6a;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container testimonial-section">
+    <p class="customer-reviews">+600 Customer Reviews</p>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <!-- First Testimonial -->
+            <div class="carousel-item active">
+                <div class="testimonial">
+                    <p class="review-text">
+                        "I've traveled with Let Travel twice now, and both times were incredible! Their attention to detail and seamless 
+                        planning made the trips stress-free and full of unforgettable moments."
+                    </p>
+                    <img src="https://via.placeholder.com/60" alt="Jonat Williams">
+                    <p class="customer-name">Jonat Williams</p>
+                    <p class="customer-role">Lovely Customer</p>
+                </div>
+            </div>
+            <!-- Second Testimonial -->
+            <div class="carousel-item left">
+                <div class="testimonial">
+                    <p class="review-text">
+                        "Absolutely breathtaking! Everything was perfectly arranged, and we had the time of our lives. Can't wait for our next adventure!"
+                    </p>
+                    <img src="https://via.placeholder.com/60" alt="Sarah Johnson">
+                    <p class="customer-name">Sarah Johnson</p>
+                    <p class="customer-role">Lovely Customer</p>
+                </div>
+            </div>
+            <!-- Third Testimonial -->
+            <div class="carousel-item right">
+                <div class="testimonial">
+                    <p class="review-text">
+                        "Let Travel made my dream trip come true! From the moment we booked until we returned home, everything was seamless and stress-free."
+                    </p>
+                    <img src="https://via.placeholder.com/60" alt="Sophia Brown">
+                    <p class="customer-name">Sophia Brown</p>
+                    <p class="customer-role">Lovely Customer</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Controls (Arrows) -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let carousel = document.querySelector("#testimonialCarousel");
+
+        // When the slide transition starts
+        carousel.addEventListener("slide.bs.carousel", function (event) {
+            let items = document.querySelectorAll(".carousel-item");
+
+            // Reset all items to their initial positions
+            items.forEach((item) => {
+                item.style.transition = "transform 0.6s ease-in-out";
+                item.style.transform = "scale(0.8)";  // Shrink non-active items
+                item.style.position = "relative";     // Keep non-active items in normal flow
+            });
+
+            // Determine which item is sliding in and position accordingly
+            if (event.direction === "left") {
+                items[event.from].classList.add("left");   // Left item moves out
+                items[event.to].classList.add("right");   // Right item moves in from the corner
+            } else {
+                items[event.from].classList.add("right");  // Right item moves out
+                items[event.to].classList.add("left");    // Left item moves in from the corner
+            }
+        });
+
+        // When the slide transition is complete
+        carousel.addEventListener("slid.bs.carousel", function () {
+            let items = document.querySelectorAll(".carousel-item");
+
+            // Reset item positions after transition
+            items.forEach((item) => {
+                item.style.transition = "transform 0.6s ease-in-out";
+                item.style.transform = "scale(1)"; // Full size for active item
+                item.style.position = "relative";  // Center the active item
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
