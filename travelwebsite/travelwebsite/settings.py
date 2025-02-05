@@ -55,8 +55,8 @@ ROOT_URLCONF = 'travelwebsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'],  # Optional global templates directory
+        'APP_DIRS': True,  # Allows Django to find templates in app-specific directories
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
