@@ -130,7 +130,7 @@
 
         body {
             margin: 0;
-            background-image: url("{% static 'travelapp/images/background.jpg' %}");
+            background-image: url("{% static 'travelapp/images/newbg.jpg' %}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -910,9 +910,9 @@ p {
 .circle-content h4,
 .circle-content1 h4,
 .circle-content3 h4{
+    margin-top: -70px;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
     color: white;
 }
 .circle-content1,.circle-content3{
@@ -921,6 +921,9 @@ p {
 .circle-content1:hover,.circle-content3:hover{
     opacity: 1;
 
+}
+.btn-details{
+    margin-top: -80px;
 }
 .btn-detail {
     margin: 5px 0;
@@ -1011,7 +1014,7 @@ p {
 .overlapping-card h5{
     position: absolute;
     left: 130px;
-    bottom: 50px;
+    bottom: 100px;
 }
 .overlapping-card span{
     color:#b6aeae;
@@ -1155,11 +1158,11 @@ body, html {
                                 <li><a class="dropdown-item" href="{% url 'about' %}">WHO ARE WE</a></li>
                                 <li><a class="dropdown-item" href="{% url 'service' %}">SERVICES</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">DESTINATION</a></li>
-                                <li><a class="dropdown-item" href="#">PRICING</a></li>
-                                <li><a class="dropdown-item" href="#">FAQ</a></li>
-                                <li><a class="dropdown-item" href="#">TESTIMONIALS</a></li>
-                                <li><a class="dropdown-item" href="#">CONTACT US</a></li>
+                                <li><a class="dropdown-item" href="{% url 'destination' %}">DESTINATION</a></li>
+                                <li><a class="dropdown-item" href="{% url 'pricing' %}">PRICING</a></li>
+                                <li><a class="dropdown-item" href="{% url 'questions' %}">FAQ</a></li>
+                                <li><a class="dropdown-item" href="{% url 'testimonials' %}">TESTIMONIALS</a></li>
+                                <li><a class="dropdown-item" href="{% url 'contact' %}">CONTACT US</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="/tours/">TOURS</a></li>
@@ -1443,12 +1446,14 @@ body, html {
             </div>
             <div class="circle-content1">
                 <h4>JAPAN</h4>
+                <div class="btn-details">
                 <button class="btn-detail">Price:$450</button>
                 <button class="btn-detail">Available Spots:10</button>
                 <button class="btn-detail">Duration:8</button>
                 <button class="btn-detail">Type:Family</button>
                 <button class="btn-detail">Departure Date:5 Nov</button>
                 <button class="btn-detail">Discount:15%</button>
+            </div>
                 <p>Top tours starting from just $550!</p>
             </div>
         </div>
@@ -1458,12 +1463,14 @@ body, html {
                 <img src="{% static 'travelapp/images/girl.webp' %}" alt="Mystical Bali">
                 <div class="circle-content">
                     <h4>JAPAN</h4>
+                    <div class="btn-details">
                     <button class="btn-detail">Price:$450</button>
                     <button class="btn-detail">Available Spots:10</button>
                     <button class="btn-detail">Duration:8</button>
                     <button class="btn-detail">Type:Family</button>
                     <button class="btn-detail">Departure Date:5 Nov</button>
                     <button class="btn-detail">Discount:15%</button>
+                </div>
                     <p>Top tours starting from just $550!</p>
                 </div>
             </div>
@@ -1475,12 +1482,14 @@ body, html {
             </div>
             <div class="circle-content3">
                 <h4>JAPAN</h4>
+                <div class="btn-details">
                 <button class="btn-detail">Price:$450</button>
                 <button class="btn-detail">Available Spots:10</button>
                 <button class="btn-detail">Duration:8</button>
                 <button class="btn-detail">Type:Family</button>
                 <button class="btn-detail">Departure Date:5 Nov</button>
                 <button class="btn-detail">Discount:15%</button>
+            </div>
                 <p>Top tours starting from just $550!</p>
             </div>
         </div>

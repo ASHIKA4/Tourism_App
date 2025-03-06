@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'travelapp/bootstrap/css/bootstrap.min.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    
+
+    <style>
+        .heading{
+            background-color: #10423A;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050; /* Ensures navbar stays above content */
+ 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a slight shadow */
+    text-align: center;
+        }
+        .heading .heading-button .btn{
+            color: white;
+            border: 1px dashed white;
+            border-radius: 15px;
+            padding: 2px 10px;
+            margin: 5px;
+            
+        }
+        .heading .heading-button .btn:hover{
+            color: goldenrod;
+            border: 1px dashed goldenrod ;
+        }
+        .heading .contacts{
+            color: #BAC7A7;
+            padding-top: 3px;
+            font-family: "Raleway", sans-serif;
+            font-weight: 300;  
+            font-size: 16px; 
+            line-height: 18px;
+            font-style: normal;
+        }
+        .heading .contacts:hover{
+            color: goldenrod;
+        }
+
+        
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 10px;
+            width: 100%;
+            z-index: 1030;
+            background-color: transparent;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .navbar.scrolled {
+            background-color: #3D511D; /* Green color on scroll */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0.5rem;
+            
+        }
+
+        .navbar .nav-link {
+            color: white !important;
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;  
+            font-size: 15px; 
+            line-height: 21px;
+            font-style: normal;
+        }
+        
+        .navbar.scrolled .nav-link {
+            color: white !important;
+        }
+        .navbar-brand img{
+           width: 150px;
+        }
+        .top-btn{
+            color: white;
+            border: 1px dashed white;
+            border-radius: 50px;
+            padding: 12px;
+            background-color: transparent;
+            position: absolute;
+            top: 250px;
+            margin-left: 150px;
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;  
+            font-size: 16px; 
+            line-height: 19px;
+            font-style: normal;
+            
+
+        }
+       
+        .navbar.scrolled .navbar-brand h1 {
+            color: #4b5320;
+        }
+
+        /* Search Input and Button */
+        .navbar .form-control {
+            border-radius: 50px;
+            width: 200px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar .form-control {
+                width: 150px;
+                font-size: 0.9rem;
+            }
+
+            .navbar .btn-outline-light {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .navbar .nav-link {
+                font-size: 0.9rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar .form-control {
+                width: 120px;
+            }
+
+            .navbar .btn-outline-light {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .navbar .nav-link {
+                font-size: 0.8rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.2rem;
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 5px;
+            }
+        }
+        body {
+            background-color: #f8f9fc; 
+        }
+        .input input{
+            border-radius: 50px;
+            padding: 25px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+        
+        
+        .contact{
+            border: 1px solid rgb(162, 157, 157);
+            border-radius: 10px;
+            background-color: rgb(230, 231, 239);
+            padding: 40px;
+        }
+        
+        .contact button{
+            padding: 20px 150px;  
+            font-size: 14px;  
+            border-radius: 50px;
+            background-color: rgb(61, 81, 29);
+            color: white;
+            border: 1px dashed;
+        }
+        
+        
+        .image-container {
+            display: flex;
+            gap: 10px;
+        }
+        .image-container img {
+            width: 230px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:nth-child(1) { transform: rotate(-10deg); }
+        .image-container img:nth-child(2) { transform: rotate(-5deg); }
+        .image-container img:nth-child(3) { transform: rotate(0deg); }
+        .image-container img:nth-child(4) { transform: rotate(5deg); }
+        .image-container img:nth-child(5) { transform: rotate(10deg); }
+        
+        /* Hover effect */
+        .image-container img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .image-container img {
+                transform: none;
+                width: 90%;
+                height: auto;
+            }
+        }
+
+            .footer {
+    background-color: #3D511D; /* Green background */
+    color: white;
+    border-radius: 30px;
+    padding: 3rem;
+    height: 120vh;
+    margin-top: -130px;
+}
+
+.footer-button .btn {
+    color: white;
+    border: 1px dashed white;
+    border-radius: 30px;
+    padding: 15px 20px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;  
+    font-size: 16px; 
+    line-height: 20px;
+    font-style: normal;
+    margin-top: 160px;   
+    background-color: #686d47;
+}
+.footer-button .btn:hover {
+    color: #FFD700;
+    border: 1px dashed #FFD700;
+}
+/* Main Content */
+.footer h5 {
+    font-family:"Libre Baskerville";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #b6aeae;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;  
+    font-size: 18px; 
+    line-height: 29px;
+    font-style: normal;   
+}
+.contact ,
+.footer .bottom span{
+    color: white !important;  /* Ensures text is white by default */
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;  
+    font-size: 16px; 
+    line-height: 22px;
+    transition: color 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.contact:hover ,
+.footer .bottom span:hover{
+    color: gold !important;  /* Changes text color to gold on hover */
+}
+
+
+.footer .circle-img .circle-img2{
+    width: 120px;
+    border-radius: 50px ;
+}
+.footer .footer-button i:hover {
+    color: #FFD700; /* Golden hover */
+}
+.travel-info-container .border-start {
+    border-left: 1px solid rgba(255, 255, 255, 0.3); /* Adjust thickness & color */
+    height: 100%; /* Ensure it stretches vertically */
+}
+
+.footer img {
+    max-width: 100%;
+    height: auto; 
+    margin-top: 1rem;
+    margin-left: -25px;
+    border: 5px solid #3D511D;
+    border-radius: 50%;
+    width: 95px;
+    height: 95px;
+}
+.footer .circle-img .circle-img2{
+    width: 120px;
+    border-radius: 50px ;
+}
+.footer .btn-bottom{
+    border: 1px dashed white;
+    border-radius: 15px;
+    background-color:#838a5a;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;  
+    font-size: 14px; 
+    line-height: 20px;
+    padding: 10px 20px ;
+    margin: 5px;
+    text-align: justify;
+    
+}
+.footer .btn-bottom span{
+    font-size: 12px;
+}
+.footer .btn-bottom:hover{
+    border: 1px dashed #FFD700;
+}
+.divider, .divider-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.footer .bottom{
+    margin-top: 60px;
+}
+.footer .bottom p{
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;  
+    font-size: 16px; 
+    line-height: 22px;
+}
+    </style>
+   
+
+    
+</head>
+
+<body>
+    <div class="header-background">
+        <div class="heading">
+            <div class="container-fluid d-flex justify-content-between">
+                <div class="col-md-4 text-center text-md-start heading-button">
+                <button class="btn"><i class="bi bi-instagram"></i></button>
+                <button class="btn"><i class="bi bi-facebook"></i></button>
+                <button class="btn"><i class="bi bi-youtube"></i></button>
+                <button class="btn"><i class="bi bi-tiktok"></i></button>
+                </div>
+                <div class="col-md-8 d-flex justify-content-center contacts">
+                    <i class="bi bi-phone"></i>
+                    <p>+1 (555) 123-4567</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="bi bi-google"></i>
+                    <p>info@example.com</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="bi bi-google"></i>
+                    <p>123 Main Street, Suite 62704</p>
+                </div>
+            </div>
+        </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Contact Section -->
+            <div class="col-12 col-md-6 contact">
+
+                <!--NAME-->
+
+                <div class="mb-2 fw-bold text-grey" style="font-family: Raleway;font-size:16px;font-weight:500;">NAME</div>
+                <div style="margin-top: 10px;"></div>
+                <div class="row g-3 ">
+                    <div class="col-12 col-md-6 input">
+                        <input type="text" class="form-control " placeholder="First name">
+                    </div>
+                    <div class="col-12 col-md-6 input">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+
+                <!--EMAIL-->
+
+                <div style="margin-top: 20px;"></div>
+                <div class="mb-2 fw-bold text-grey" style="font-family: Raleway;font-size:16px;font-weight:500;">EMAIL</div>
+                <div style="margin-top: 10px;"></div>
+                <div class="input">
+                    <input type="text" class="form-control " placeholder=" Your Email">
+                </div>
+
+                <!--PHONE-->
+
+                <div style="margin-top: 20px;"></div>
+                <div class="mb-2 fw-bold text-grey" style="font-family: Raleway;font-size:16px;font-weight:500;">PHONE</div>
+                <div style="margin-top: 10px;"></div>
+                <div class="input">
+                    <input type="text" class="form-control " placeholder="Phone Number">
+                </div>
+
+                <!--MESSAGE-->
+
+                <div style="margin-top: 20px;"></div>
+                <div class="mb-2 fw-bold text-grey" style="font-family: Raleway;font-size:16px;font-weight:500;">MESSAGE</div>
+                <div style="margin-top: 10px;"></div>
+                <textarea class="form-control w-100" rows="4" style="resize: vertical;" placeholder="Your Message"> </textarea>
+                <div style="margin-top: 30px;"></div>
+
+                <!--BUTTON-->
+
+                <div class="text-center">
+                    <button class="text-center">TIME TO TRAVEL!</button>
+                </div>
+
+
+            </div>
+    
+            <!-- Link Section (Right Side) -->
+            <div class="col-12 col-md-6 link">
+                <p>RIGHT SECTION</p>
+               </div>
+                
+
+
+               
+            
+            
+            
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="d-flex justify-content-center image-container">
+        <img src="{% static 'travelapp/images/btm-img1.jpg' %}" alt="btm-img1" class="btm-img1">
+        <img src="{% static 'travelapp/images/btm-img2.jpg' %}" alt="btm-img2" class="btm-img2">
+        <img src="{% static 'travelapp/images/btm-img3.jpg' %}" alt="btm-img3" class="btm-img3">
+        <img src="{% static 'travelapp/images/btm-img4.jpg' %}" alt="btm-img4" class="btm-img4">
+        <img src="{% static 'travelapp/images/btm-img5.jpg' %}" alt="btm-img5" class="btm-img5">
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Buttons -->
+            <div class="row text-center text-md-start footer-button">
+                <div class="col-md-8">
+                    <button class="btn">Home</button>
+                    <button class="btn">About Company</button>
+                    <button class="btn">Destination</button>
+                    <button class="btn">Latest Discounts</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn"><i class="bi bi-instagram"></i></button>
+                    <button class="btn"><i class="bi bi-facebook"></i></button>
+                    <button class="btn"><i class="bi bi-youtube"></i></button>
+                    <button class="btn"><i class="bi bi-linkedin"></i></button>
+                </div>    
+            </div>
+    
+            <!-- Divider -->
+            <div class="divider"></div>
+            <div class="container travel-info-container ">
+                <div class="row text-center text-lg-start">
+                    <!-- Column 1 -->
+                    <div class="col-md-4 mb-4 position-relative">
+                        <h5>Discover New Horizons</h5>
+                        <p>Start your adventure today and explore <br> the world with Let Travel!</p>
+                        <div class="circle-img">
+                            <img src="{% static 'travelapp/images/organizer.jpg' %}" alt="Image 1">
+                            <img src="{% static 'travelapp/images/girl.webp' %}" alt="Image 2" class="circle-img2">
+                            <img src="{% static 'travelapp/images/sophia.jpg' %}" alt="Image 3">
+                            <img src="{% static 'travelapp/images/james.jpg' %}" alt="Image 4">
+                        </div>
+                    </div>
+            
+                    <!-- Column 2 -->
+                    <div class="col-md-4 mb-4 position-relative border-start">
+                        <h5>Always Within Reach</h5>
+                        <p>Let Travel HQ, 1234 West End <br> Avenue, Suite 7, Los Angeles</p><br>
+                        <p class="contact">
+                            (239) 555-0108 <br> (406) 555-0120
+                        </p>
+                    </div>
+            
+                    <!-- Column 3 -->
+                    <div class="col-md-4 mb-4 position-relative border-start">
+                        <h5>Download Our App</h5>
+                        <p>Plan, book, and manage your trips <br> on the go – download our app now!</p><br>
+                        <div class="d-flex flex-row align-items-center">
+                        
+                                <button class="btn-bottom"><i class="bi bi-apple"></i><span>Download on the</span><br> App Store</button>
+                                <button class="btn-bottom"><i class="bi bi-google-play"></i><span>Get it on </span> <br>Google Play</button>
+                    
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    
+            <!-- Bottom Divider -->
+            <div class="divider-bottom"></div>
+    
+            <!-- Footer Bottom -->
+            <div class="row bottom">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; Let Travel 128. All Rights Reserved. Licensing</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>
+                        <span>Webflow Templates</span> by <span>128 Digital</span>. Powered by <span>Webflow</span>
+                    </p>
+                </div>
+            </div>   
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+

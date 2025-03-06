@@ -56,6 +56,12 @@
             padding: 10px 10px;
             background-color: #f89008;
         }
+        .book-btn:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        
+        
         .book-btn:hover{
             background-color: transparent;
             border: 1px dashed white;
@@ -364,7 +370,7 @@
                 content: "";
                 flex: 1;
                 border-top: 1px solid white;
-                margin: 0 50px; /* Adjust spacing between the line and heading */
+                margin: 0 20px; /* Adjust spacing between the line and heading */
             }
             .button-box h6{
                 font-family: 'Georgia', serif;
@@ -626,11 +632,11 @@
                                     <li><a class="dropdown-item" href="{% url 'about' %}">WHO ARE WE</a></li>
                                     <li><a class="dropdown-item" href="{% url 'service' %}">SERVICES</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">DESTINATION</a></li>
-                                    <li><a class="dropdown-item" href="#">PRICING</a></li>
-                                    <li><a class="dropdown-item" href="#">FAQ</a></li>
-                                    <li><a class="dropdown-item" href="#">TESTIMONIALS</a></li>
-                                    <li><a class="dropdown-item" href="#">CONTACT US</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'destination' %}">DESTINATION</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'pricing' %}">PRICING</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'questions' %}">FAQ</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'testimonials' %}">TESTIMONIALS</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'contact' %}">CONTACT US</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="/tours/">TOURS</a></li>
@@ -650,7 +656,7 @@
                 <!-- Cart & Book a Trip (md-3) -->
                 <div class="col-md-3 col-6 d-flex justify-content-end">
                     <button class="btn text-light cart-btn me-2">Cart</button>
-                    <button class="btn book-btn">Book a Trip Now</button>
+                    <a href="{% url 'contact' %}" class="btn book-btn">Book a Trip Now</a>
                 </div>
 
             </div>
