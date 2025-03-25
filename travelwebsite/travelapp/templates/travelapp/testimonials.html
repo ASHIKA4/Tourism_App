@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TESTIMONIALS</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'travelapp/bootstrap/css/bootstrap.min.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    
+        <style>
+            /* Full-page Background */
+        .header-background {
+            background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                             url("{% static 'travelapp/images/new1.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            border-radius: 30px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 10px;
+            width: 100%;
+            z-index: 1030;
+            background-color: transparent;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .navbar.scrolled {
+            background-color: #3D511D; /* Green color on scroll */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0.5rem;
+            
+        }
+
+        .navbar .nav-link {
+            color: white !important;
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;  
+            font-size: 15px; 
+            line-height: 21px;
+            font-style: normal;
+        }
+        
+        .navbar.scrolled .nav-link {
+            color: white !important;
+        }
+        .navbar-brand img{
+           width: 150px;
+           border: none;
+           
+        }
+        .top-btn{
+            color: white;
+            border: 1px dashed white;
+            border-radius: 50px;
+            padding: 12px;
+            background-color: transparent;
+            position: absolute;
+            top: 250px;
+            margin-left: 150px;
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;  
+            font-size: 16px; 
+            line-height: 19px;
+            font-style: normal;
+            
+
+        }
+       
+        .navbar.scrolled .navbar-brand h1 {
+            color: #4b5320;
+        }
+
+        /* Search Input and Button */
+        .navbar .form-control {
+            border-radius: 50px;
+            width: 200px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar .form-control {
+                width: 150px;
+                font-size: 0.9rem;
+            }
+
+            .navbar .btn-outline-light {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .navbar .nav-link {
+                font-size: 0.9rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar .form-control {
+                width: 120px;
+            }
+
+            .navbar .btn-outline-light {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .navbar .nav-link {
+                font-size: 0.8rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.2rem;
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 5px;
+            }
+        }
+        
+        .title h1{
+            font-family:"Libre Baskerville";
+            font-style: italic;
+            font-weight: 400;
+            font-size: 90px;
+            line-height: 100px;
+            margin-top: 180px;
+        }
+      
+            .stars {
+                font-size: 20px;
+                color: #FF9800;
+            }
+
+            .para p{
+                font-family: "Raleway", sans-serif;
+                font-weight: 300;  
+                font-size: 16px; 
+                line-height: 26px;
+                font-style: normal;
+                color: #656b6b;
+            }
+            .profile h1{
+                font-family: "Raleway", sans-serif;
+                font-weight: 600;  
+                font-size: 16px; 
+                line-height: 19px;
+                font-style: normal;
+                color: #10423a;
+            } 
+
+            .column1{
+                background-color: rgba(247,248,252,255);
+                max-width: 450px;
+                border-top: 4px solid #FF6F00;
+                border-radius: 10px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            }
+
+            .column1:hover{
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+            }
+
+            .profile h4{
+                font-family: "Raleway", sans-serif;
+               
+            }
+            .gallery{
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+    border: 1px solid #FF9800;            }
+           
+    .footer {
+        background-color: #3D511D; /* Green background */
+        color: white;
+        border-radius: 30px;
+        padding: 3rem;
+        height: 100vh;
+        
+      }
+      
+      .footer-button .btn {
+        color: white;
+        border: 1px dashed white;
+        border-radius: 30px;
+        padding: 15px 20px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;  
+        font-size: 16px; 
+        line-height: 20px;
+        font-style: normal;
+        margin-top: 60px;   
+        background-color: #686d47;
+      }
+      .footer-button .btn:hover {
+        color: #FFD700;
+        border: 1px dashed #FFD700;
+      }
+      /* Main Content */
+      .footer h5 {
+        font-family:"Libre Baskerville";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+      }
+      .footer p {
+        margin: 0 0 10px;
+        color: #b6aeae;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;  
+        font-size: 18px; 
+        line-height: 29px;
+        font-style: normal;   
+      }
+      .contact ,
+      .footer .bottom span{
+        color: white !important;  /* Ensures text is white by default */
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;  
+        font-size: 16px; 
+        line-height: 22px;
+        transition: color 0.3s ease-in-out; /* Smooth hover effect */
+      }
+      
+      .contact:hover ,
+      .footer .bottom span:hover{
+        color: gold !important;  /* Changes text color to gold on hover */
+      }
+      
+      
+      .footer .circle-img .circle-img2{
+        width: 120px;
+        border-radius: 50px ;
+      }
+      .footer .footer-button i:hover {
+        color: #FFD700; /* Golden hover */
+      }
+      .travel-info-container .border-start {
+        border-left: 1px solid rgba(255, 255, 255, 0.3); /* Adjust thickness & color */
+        height: 100%; /* Ensure it stretches vertically */
+      }
+      
+      .footer img {
+        max-width: 100%;
+        height: auto; 
+        margin-top: 1rem;
+        margin-left: -25px;
+        border: 5px solid #3D511D;
+        border-radius: 50%;
+        width: 95px;
+        height: 95px;
+      }
+      .footer .circle-img .circle-img2{
+        width: 120px;
+        border-radius: 50px ;
+      }
+      .footer .btn-bottom{
+        border: 1px dashed white;
+        border-radius: 15px;
+        background-color:#838a5a;
+        color: white;
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;  
+        font-size: 14px; 
+        line-height: 20px;
+        padding: 10px 20px ;
+        margin: 5px;
+        text-align: justify;
+        
+      }
+      .footer .btn-bottom span{
+        font-size: 12px;
+      }
+      .footer .btn-bottom:hover{
+        border: 1px dashed #FFD700;
+      }
+      .divider, .divider-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+      .footer .bottom{
+        margin-top: 60px;
+      }
+      .footer .bottom p{
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;  
+        font-size: 17px; 
+        line-height: 22px;
+
+      }   
+        </style>
+    </head>
+    <body>
+        <div class="header-background mt-2 mx-2">
+            <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <div class="row w-100 align-items-center">
+    
+                <!-- Navigation Links (md-4) -->
+                <div class="col-md-4 d-flex justify-content-start">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ABOUT</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'about' %}">WHO ARE WE</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'service' %}">SERVICES</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'destination' %}">DESTINATION</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'pricing' %}">PRICING</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'questions' %}">FAQ</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'testimonials' %}">TESTIMONIALS</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'contact' %}">CONTACT US</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/tours/">TOURS</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ALL PAGES</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- Brand Logo (md-4) -->
+                <div class="col-md-4 d-flex justify-content-center">
+                    <a class="navbar-brand" href="/">
+                        <img src="{% static 'travelapp/images/brand1.png' %}" alt="Brand Logo" style="max-height: 50px;">
+                    </a>
+                </div>
+    
+                <!-- Search and Cart (md-4) -->
+                <div class="col-md-4 d-flex justify-content-end align-items-center">
+                    <form class="d-flex">
+                        <input class="form-control rounded-pill me-2" type="search" placeholder="Search..." aria-label="Search">
+                        <button class="btn btn-outline-warning rounded-pill" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                    <a href="#" class="btn btn-outline-secondary bg-secondary rounded-pill text-white ms-3">Cart (0)</a>
+                </div>
+    
+            </div>
+        </div>
+    </nav>
+    <div class="title text-light d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <h1>What They Say <br>About Us...</h1>
+    </div>
+    </div> 
+    
+        <div class="container-fluid text-center">
+            <div class="row p-5 justify-content-between align-items-stretch text-md-start text-center">
+                
+                <!-- COLUMN 1 -->
+                <div class="col-md-4 mt-5">
+
+                    <div class="column1 p-5 d-flex flex-column align-items-md-start  align-self-start">
+                        <div class="stars mb-5">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="para">
+                            <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                        </div>
+                        <div style="margin-top: 20px;"></div>
+    
+                        <div class="row mt-auto justify-content-md-start justify-content-center ">
+                            <div class="col-3">
+                                <img src="{% static 'travelapp/images/person1.jpg' %}" alt="Home Image" class="gallery">
+                            </div>
+                            <div class="col-9 profile">
+                                <h1>ANNA JOHNSON</h1>
+                                <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column1 p-5 d-flex flex-column align-items-md-start  align-self-start mt-5">
+                        <div class="stars mb-5">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="para">
+                            <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                        </div>
+                        <div style="margin-top: 20px;"></div>
+    
+                        <div class="row mt-auto justify-content-md-start justify-content-center ">
+                            <div class="col-3">
+                                <img src="{% static 'travelapp/images/person2.jpg' %}" alt="Home Image" class="gallery">
+                            </div>
+                            <div class="col-9 profile">
+                                <h1>ANNA JOHNSON</h1>
+                                <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column1 p-5 d-flex flex-column align-items-md-start  align-self-start mt-5">
+                        <div class="stars mb-5">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="para">
+                            <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                        </div>
+                        <div style="margin-top: 20px;"></div>
+    
+                        <div class="row mt-auto justify-content-md-start justify-content-center ">
+                            <div class="col-3">
+                                <img src="{% static 'travelapp/images/person3.jpg' %}" alt="Home Image" class="gallery">
+                            </div>
+                            <div class="col-9 profile">
+                                <h1 >ANNA JOHNSON</h1>
+                                <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column1 p-5 d-flex flex-column align-items-md-start  align-self-start mt-5">
+                        <div class="stars mb-5">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="para">
+                            <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                        </div>
+                        <div style="margin-top: 20px;"></div>
+    
+                        <div class="row mt-auto justify-content-md-start justify-content-center ">
+                            <div class="col-3">
+                                <img src="{% static 'travelapp/images/person4.jpg' %}" alt="Home Image" class="gallery">
+                            </div>
+                            <div class="col-9 profile">
+                                <h1 >ANNA JOHNSON</h1>
+                                <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column1 p-5 d-flex flex-column align-items-md-start  align-self-start mt-5">
+                        <div class="stars mb-5">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="para">
+                            <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                        </div>
+                        <div style="margin-top: 20px;"></div>
+    
+                        <div class="row mt-auto justify-content-md-start justify-content-center ">
+                            <div class="col-3">
+                                <img src="{% static 'travelapp/images/person5.jpg' %}" alt="Home Image" class="gallery">
+                            </div>
+                            <div class="col-9 profile">
+                                <h1>ANNA JOHNSON</h1>
+                                <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+
+                    
+                </div>
+        
+                <!-- COLUMN 2 -->
+
+                
+                <div class="col-md-4 mt-4">
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Our journey with Let Travel was beyond what we could have imagined!.and the memories we made are priceless!. I’m grateful for the beautiful memories Let Travel has given us and would highly recommend them to anyone looking for a unique travel experience!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person6.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>CHRIS WILSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">BRAND MANAGER</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start mt-5">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Our journey with Let Travel was beyond what we could have imagined!.and the memories we made are priceless!. I’m grateful for the beautiful memories Let Travel has given us and would highly recommend them to anyone looking for a unique travel experience!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person7.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>CHRIS WILSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">BRAND MANAGER</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start mt-5">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Our journey with Let Travel was beyond what we could have imagined!.and the memories we made are priceless!. I’m grateful for the beautiful memories Let Travel has given us and would highly recommend them to anyone looking for a unique travel experience!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person8.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>CHRIS WILSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">BRAND MANAGER</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start mt-5">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Our journey with Let Travel was beyond what we could have imagined!.and the memories we made are priceless!. I’m grateful for the beautiful memories Let Travel has given us and would highly recommend them to anyone looking for a unique travel experience!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person9.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>CHRIS WILSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">BRAND MANAGER</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                </div>
+        
+                <!-- COLUMN 3 -->
+                <div class="col-md-4 mt-5">
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person10.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>ANNA JOHNSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start mt-5">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person10.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>ANNA JOHNSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start mt-5">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person9.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>ANNA JOHNSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start mt-5">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person8.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>ANNA JOHNSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                   <div class=" column1 p-5 d-flex flex-column align-items-md-start align-items-center align-self-start mt-5">
+                    <div class="stars mb-5">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="para">
+                        <p class="text-muted mb-3">"Let Travel crafted a flawless experience for my family. Every detail was perfectly tailored, and the memories we made are priceless!"</p>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row mt-auto justify-content-md-start justify-content-center">
+                        <div class="col-3">
+                            <img src="{% static 'travelapp/images/person7.jpg' %}" alt="Home Image" class="gallery">
+                        </div>
+                        <div class="col-9 profile">
+                            <h1>ANNA JOHNSON</h1>
+                            <h4 style="color: #FF6F00; font-size:18px;">CREATIVE LEAD</h4>
+                        </div>
+                    </div>
+                   </div>
+
+                </div>
+        
+            </div>
+        </div>
+        
+
+        <!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <!-- Buttons -->
+        <div class="row text-center text-md-start footer-button">
+            <div class="col-md-8">
+                <button class="btn">Home</button>
+                <button class="btn">About Company</button>
+                <button class="btn">Destination</button>
+                <button class="btn">Latest Discounts</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn"><i class="bi bi-instagram"></i></button>
+                <button class="btn"><i class="bi bi-facebook"></i></button>
+                <button class="btn"><i class="bi bi-youtube"></i></button>
+                <button class="btn"><i class="bi bi-linkedin"></i></button>
+            </div>    
+        </div>
+  
+        <!-- Divider -->
+        <div class="divider"></div>
+        <div class="container travel-info-container ">
+            <div class="row text-center text-lg-start">
+                <!-- Column 1 -->
+                <div class="col-md-4 mb-4 position-relative">
+                    <h5>Discover New Horizons</h5>
+                    <p>Start your adventure today and explore <br> the world with Let Travel!</p>
+                    <div class="circle-img">
+                        <img src="{% static 'travelapp/images/organizer.jpg' %}" alt="Image 1">
+                        <img src="{% static 'travelapp/images/girl.webp' %}" alt="Image 2" class="circle-img2">
+                        <img src="{% static 'travelapp/images/sophia.jpg' %}" alt="Image 3">
+                        <img src="{% static 'travelapp/images/james.jpg' %}" alt="Image 4">
+                    </div>
+                </div>
+        
+                <!-- Column 2 -->
+                <div class="col-md-4 mb-4 position-relative border-start">
+                    <h5>Always Within Reach</h5>
+                    <p>Let Travel HQ, 1234 West End <br> Avenue, Suite 7, Los Angeles</p><br>
+                    <p class="contact">
+                        (239) 555-0108 <br> (406) 555-0120
+                    </p>
+                </div>
+        
+                <!-- Column 3 -->
+                <div class="col-md-4 mb-4 position-relative border-start">
+                    <h5>Download Our App</h5>
+                    <p>Plan, book, and manage your trips <br> on the go – download our app now!</p><br>
+                    <div class="d-flex flex-row align-items-center">
+                    
+                            <button class="btn-bottom"><i class="bi bi-apple"></i><span>Download on the</span><br> App Store</button>
+                            <button class="btn-bottom"><i class="bi bi-google-play"></i><span>Get it on </span> <br>Google Play</button>
+                
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+  
+        <!-- Bottom Divider -->
+        <div class="divider-bottom"></div>
+  
+        <!-- Footer Bottom -->
+        <div class="row bottom">
+            <div class="col-md-6 text-center text-md-start">
+                <p>&copy; Let Travel 128. All Rights Reserved. Licensing</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p>
+                    <span>Webflow Templates</span> by <span>128 Digital</span>. Powered by <span>Webflow</span>
+                </p>
+            </div>
+        </div>   
+    </div>
+  </footer>
+        
+
+        
+    
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <
+      
+        <script>
+            AOS.init();
+
+              // Add or remove the "scrolled" class based on scroll position
+        document.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        </script>
+        
+    </body>
+    </html>
+    

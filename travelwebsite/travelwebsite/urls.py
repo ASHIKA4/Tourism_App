@@ -19,10 +19,14 @@ from django.urls import path
 from travelapp import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
+    path('service/', views.service, name='service'),
+    path('pricing/', views.pricing, name='pricing'),
     path('tours/', views.tours, name='tours'),
-    path('destinations/', views.destinations, name='destinations'),
+    path('destination/', views.destination, name='destination'),
+    path('questions/', views.questions, name='questions'),
+    path('testimonials/', views.testimonials, name='testimonials'),
     path('book/', views.book_trip, name='book_trip'),
+    path('contact/', views.contact, name='contact'),
 ]
